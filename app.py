@@ -1,16 +1,18 @@
 from PIL import Image
 import requests
 from streamlit_lottie import st_lottie
+from PIL import Image
+import requests
+from streamlit_lottie import st_lottie
 import streamlit as st
 from typing import Union, Optional
 
-try:
-    # Python 3.8 and later
-    from typing import Literal
-except ImportError:
-    # Python 3.7: Use Literal class from typing_extensions
-    from typing_extensions import Literal
-
+# Define Literal class for Python 3.7 compatibility
+if not hasattr(Optional, '__origin__') and hasattr(Optional, '__args__'):
+    class Literal:
+        @classmethod
+        def __getitem__(cls, item):
+            return item
 
 st.set_page_config(page_title="My webpage", page_icon=":fleur_de_lis:", layout="wide")
 
@@ -52,8 +54,8 @@ with st.container():
         )
         st.write("[YouTube Channel >](https://www.youtube.com/channel/UC-9pb_cMw6IKIdBHkeZyH1w)")
 
-    with right_column:
-        st_lottie(lottie_coding, height=300, key='Coding')
+with right_column:
+    st_lottie(lottie_coding, height=300, key='Coding')
 
 with st.container():
     st.write("---")
