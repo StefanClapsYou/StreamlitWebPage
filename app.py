@@ -1,18 +1,12 @@
 from PIL import Image
 import requests
 from streamlit_lottie import st_lottie
-from PIL import Image
-import requests
-from streamlit_lottie import st_lottie
 import streamlit as st
-from typing import Union, Optional
 
-# Define Literal class for Python 3.7 compatibility
-if not hasattr(Optional, '__origin__') and hasattr(Optional, '__args__'):
-    class Literal:
-        @classmethod
-        def __getitem__(cls, item):
-            return item
+# Manually define Literal class for Python 3.7 compatibility
+class Literal:
+    def __getitem__(self, item):
+        return item
 
 st.set_page_config(page_title="My webpage", page_icon=":fleur_de_lis:", layout="wide")
 
@@ -106,6 +100,7 @@ with st.container():
         st.markdown(contact_form, unsafe_allow_html=True)
     with right_column:
         st.empty()
+
 
 
 
